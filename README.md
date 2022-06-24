@@ -16,7 +16,7 @@ With the motion sensor, I enabled the ball to move within the ice hockey field. 
  - Parcelable implementation generator (kotlin-parcelize)
  - DataBinding
 
-## Screens
+## Screens 📱
 
 HomeFragment        | RecordListFragment
 :-------------------------:|:-------------------------:
