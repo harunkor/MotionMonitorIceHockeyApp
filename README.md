@@ -5,7 +5,8 @@ Motion Monitor application which tracks the phones the sensor.
 # Used Technologies
 
  - MVVM with Clean Architecture
- - Navigation Components
+ - Navigation Component
+ - Safe Args With the Navigation Component
  - Dependency injection with Hilt 
  - Room database
  - Kotlin coroutines on Android 
