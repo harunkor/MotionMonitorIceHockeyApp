@@ -1,11 +1,7 @@
 package com.harunkor.motionmonitorapp
 
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.harunkor.motionmonitorapp.presentation.viewmodel.move.MoveViewModel
-import com.harunkor.motionmonitorapp.utils.Response
 import dagger.hilt.android.AndroidEntryPoint
 
 

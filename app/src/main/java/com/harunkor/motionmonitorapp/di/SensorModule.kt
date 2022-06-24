@@ -1,7 +1,8 @@
 package com.harunkor.motionmonitorapp.di
 
 import android.content.Context
-import android.hardware.*
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import com.harunkor.motionmonitorapp.domain.usecase.SensorUseCase
 import dagger.Module
 import dagger.Provides

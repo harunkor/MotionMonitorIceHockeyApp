@@ -1,7 +1,6 @@
 package com.harunkor.motionmonitorapp.utils
 
 import android.hardware.SensorEvent
-import android.util.Log
 import android.widget.ImageView
 
 

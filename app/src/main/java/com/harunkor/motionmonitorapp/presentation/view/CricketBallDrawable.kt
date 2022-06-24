@@ -1,6 +1,5 @@
 package com.harunkor.motionmonitorapp.presentation.view
 
-import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
 

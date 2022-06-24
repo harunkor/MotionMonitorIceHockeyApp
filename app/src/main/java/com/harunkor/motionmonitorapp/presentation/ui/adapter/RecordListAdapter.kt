@@ -7,8 +7,8 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.harunkor.motionmonitorapp.BR
 import com.harunkor.motionmonitorapp.R
-import com.harunkor.motionmonitorapp.domain.model.MoveEntity
 import com.harunkor.motionmonitorapp.databinding.FragmentRecordCardItemBinding
+import com.harunkor.motionmonitorapp.domain.model.MoveEntity
 
 class RecordListAdapter(val allMovements: MutableList<MoveEntity>,
   private val onItemClickHandler: (moveEntity:MoveEntity) -> Unit)

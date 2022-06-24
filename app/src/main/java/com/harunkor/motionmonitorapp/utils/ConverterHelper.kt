@@ -1,6 +1,5 @@
 package com.harunkor.motionmonitorapp.utils
 
-import android.hardware.SensorEvent
 import androidx.room.ProvidedTypeConverter
 import androidx.room.TypeConverter
 import com.google.gson.Gson
