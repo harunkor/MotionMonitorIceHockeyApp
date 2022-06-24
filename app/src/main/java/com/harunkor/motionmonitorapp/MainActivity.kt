@@ -14,22 +14,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-  /*
-    private fun getAllMoves(){
-        when(val resp = moveViewModel.allMovements.value){
-            is Response.Loading -> {
-                // Load
-            }
-            is Response.Success -> {
-               // resp.data
-                val list = resp.data
-                Log.v("DENEME",list.size.toString())
-            }
-            is Response.Error -> {
-                //resp.message
-            }
-        }
-    }*/
+    /*
+      private fun getAllMoves(){
+          when(val resp = moveViewModel.allMovements.value){
+              is Response.Loading -> {
+                  // Load
+              }
+              is Response.Success -> {
+                 // resp.data
+                  val list = resp.data
+                  Log.v("DENEME",list.size.toString())
+              }
+              is Response.Error -> {
+                  //resp.message
+              }
+          }
+      }*/
 
     /*
     private fun addMove(moveEntity: MoveEntity){

@@ -25,13 +25,13 @@ class SensorModule {
     @Provides
     @FragmentScoped
     fun provideSensor(sensorManager: SensorManager): Sensor {
-        return   sensorManager.getDefaultSensor(Sensor.TYPE_ALL)
+        return sensorManager.getDefaultSensor(Sensor.TYPE_ALL)
     }
 
     @Provides
     @FragmentScoped
-    fun provideSensorEventListener(sensorManager: SensorManager,sensor: Sensor): SensorUseCase {
-        return SensorUseCase(sensor,sensorManager)
+    fun provideSensorEventListener(sensorManager: SensorManager, sensor: Sensor): SensorUseCase {
+        return SensorUseCase(sensor, sensorManager)
     }
 
 }

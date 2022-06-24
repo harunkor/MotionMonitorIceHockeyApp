@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
 
 
     val args: HomeFragmentArgs by navArgs()
-    lateinit var jobPreview:Job
+    lateinit var jobPreview: Job
     private lateinit var fragmentHomeBinding: FragmentHomeBinding
     private val moveViewModel by viewModels<MoveViewModel>()
 
@@ -42,25 +42,26 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentHomeBinding = DataBindingUtil
-            .inflate(inflater,R.layout.fragment_home,container,false)
+            .inflate(inflater, R.layout.fragment_home, container, false)
         return fragmentHomeBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(args.movemodel==null){
+        if (args.movemodel == null) {
             setUseCase()
             init()
-        }else{
+        } else {
             setPreviewUseCase(args.movemodel!!)
             previewInit()
             onBackPressed()
         }
 
     }
-    private fun  setUseCase(){
-        fragmentHomeBinding.hockeyball.x=100.0f
-        fragmentHomeBinding.hockeyball.y=100.0f
+
+    private fun setUseCase() {
+        fragmentHomeBinding.hockeyball.x = 100.0f
+        fragmentHomeBinding.hockeyball.y = 100.0f
         sensorUseCase.setCricketImageView(fragmentHomeBinding.hockeyball)
         sensorUseCase.setCricketBallRadius(25)
         sensorUseCase.setSceneFrameWidth(fragmentHomeBinding.frame.width)
@@ -69,13 +70,13 @@ class HomeFragment : Fragment() {
         setDisplayMetrics()
     }
 
-    private fun setDisplayMetrics(){
+    private fun setDisplayMetrics() {
         val metrics = Resources.getSystem().getDisplayMetrics()
         sensorUseCase.setScreenWidth(metrics.widthPixels)
         sensorUseCase.setScreenHeight(metrics.heightPixels)
     }
 
-    private fun init(){
+    private fun init() {
         fragmentHomeBinding.recordCheckButton.setOnCheckedChangeListener { compoundButton, isChecked ->
             if (compoundButton.id == R.id.record_check_button && isChecked) {
                 sensorUseCase.startSensor()
@@ -90,9 +91,9 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun  setPreviewUseCase(moveEntity: MoveEntity){
-        fragmentHomeBinding.hockeyball.x=100.0f
-        fragmentHomeBinding.hockeyball.y=100.0f
+    private fun setPreviewUseCase(moveEntity: MoveEntity) {
+        fragmentHomeBinding.hockeyball.x = 100.0f
+        fragmentHomeBinding.hockeyball.y = 100.0f
         sensorUseCase.setCricketImageView(fragmentHomeBinding.hockeyball)
         sensorUseCase.setCricketBallRadius(25)
         sensorUseCase.setSceneFrameWidth(fragmentHomeBinding.frame.width)
@@ -100,26 +101,25 @@ class HomeFragment : Fragment() {
         sensorUseCase.setRecord(moveViewModel)
         setDisplayMetrics()
 
-        jobPreview=GlobalScope.launch(Dispatchers.Main) {
+        jobPreview = GlobalScope.launch(Dispatchers.Main) {
             sensorUseCase.playPreviewRecord(moveEntity)
         }
     }
 
-    private fun previewInit(){
+    private fun previewInit() {
         fragmentHomeBinding.recordCheckButton.visibility = View.GONE
         fragmentHomeBinding.listButton.visibility = View.GONE
     }
 
-    private fun onBackPressed(){
+    private fun onBackPressed() {
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                jobPreview.cancel()
-                findNavController().popBackStack()
-            }
-        })
+                override fun handleOnBackPressed() {
+                    jobPreview.cancel()
+                    findNavController().popBackStack()
+                }
+            })
     }
-
 
 
 }

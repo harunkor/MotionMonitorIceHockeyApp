@@ -12,9 +12,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MoveViewModel @Inject constructor(private val moveUseCase: MoveUseCase):ViewModel(){
+class MoveViewModel @Inject constructor(private val moveUseCase: MoveUseCase) : ViewModel() {
 
-    private val allMovementsTemp = mutableStateOf<Response<MutableList<MoveEntity>>>(Response.Loading)
+    private val allMovementsTemp =
+        mutableStateOf<Response<MutableList<MoveEntity>>>(Response.Loading)
     val allMovements: State<Response<MutableList<MoveEntity>>> = allMovementsTemp
 
     private val isAddMoveStateTemp = mutableStateOf<Response<Unit?>>(Response.Success(null))
@@ -24,18 +25,18 @@ class MoveViewModel @Inject constructor(private val moveUseCase: MoveUseCase):Vi
         getAllMovements()
     }
 
-    fun getAllMovements(){
+    fun getAllMovements() {
         viewModelScope.launch {
-            moveUseCase.allMovements().collect {
-                response -> allMovementsTemp.value = response
+            moveUseCase.allMovements().collect { response ->
+                allMovementsTemp.value = response
             }
         }
     }
 
-    fun addMove(moveEntity: MoveEntity){
+    fun addMove(moveEntity: MoveEntity) {
         viewModelScope.launch {
-            moveUseCase.addMove(moveEntity).collect {
-                response -> isAddMoveStateTemp.value = response
+            moveUseCase.addMove(moveEntity).collect { response ->
+                isAddMoveStateTemp.value = response
             }
         }
     }

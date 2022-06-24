@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RecordListFragment : Fragment() {
 
     private val moveViewModel by viewModels<MoveViewModel>()
-    private lateinit var recordListAdapter:RecordListAdapter
+    private lateinit var recordListAdapter: RecordListAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var recordListBinding: FragmentRecordListBinding
 
@@ -30,8 +30,9 @@ class RecordListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        recordListBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_record_list
-            ,container,false)
+        recordListBinding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_record_list, container, false
+        )
         return recordListBinding.root
     }
 
@@ -41,13 +42,13 @@ class RecordListFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        when(val resp = moveViewModel.allMovements.value){
+        when (val resp = moveViewModel.allMovements.value) {
             is Response.Loading -> {
                 // Load
             }
             is Response.Success -> {
                 // resp.data
-                recordListAdapter = RecordListAdapter(resp.data,{ movemodel ->
+                recordListAdapter = RecordListAdapter(resp.data, { movemodel ->
 
                     val action = RecordListFragmentDirections
                         .actionRecordListFragmentToHomeFragment().setMovemodel(movemodel)
@@ -55,8 +56,8 @@ class RecordListFragment : Fragment() {
 
                 })
                 linearLayoutManager = LinearLayoutManager(context)
-                recordListBinding.recylerRecord.layoutManager=linearLayoutManager
-                recordListBinding.setVariable(BR.adapterRecordList,recordListAdapter)
+                recordListBinding.recylerRecord.layoutManager = linearLayoutManager
+                recordListBinding.setVariable(BR.adapterRecordList, recordListAdapter)
             }
             is Response.Error -> {
                 //resp.message

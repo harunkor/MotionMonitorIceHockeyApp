@@ -13,7 +13,7 @@ import com.harunkor.motionmonitorapp.utils.Response
 import kotlinx.coroutines.delay
 import java.util.*
 
-class SensorUseCase(val sensor: Sensor,val sensorManager: SensorManager):SensorEventListener {
+class SensorUseCase(val sensor: Sensor, val sensorManager: SensorManager) : SensorEventListener {
 
     private var moveAction: MoveAction
     private lateinit var moveViewModel: MoveViewModel
@@ -24,15 +24,15 @@ class SensorUseCase(val sensor: Sensor,val sensorManager: SensorManager):SensorE
         moveAction = MoveAction()
     }
 
-    fun setCricketImageView( ballImageView: ImageView) {
+    fun setCricketImageView(ballImageView: ImageView) {
         moveAction.setCricketBallImageView(ballImageView)
     }
 
-    fun setCricketBallRadius(cricketBallRadius:Int){
+    fun setCricketBallRadius(cricketBallRadius: Int) {
         moveAction.setCricketBallRadius(cricketBallRadius)
     }
 
-    fun setSceneFrameWidth(sceneFrameWidth: Int){
+    fun setSceneFrameWidth(sceneFrameWidth: Int) {
         moveAction.setSceneFrameWidth(sceneFrameWidth)
     }
 
@@ -40,11 +40,11 @@ class SensorUseCase(val sensor: Sensor,val sensorManager: SensorManager):SensorE
         moveAction.setSceneFrameHeight(sceneFrameHeight)
     }
 
-    fun setScreenWidth(screenWidth: Int){
+    fun setScreenWidth(screenWidth: Int) {
         moveAction.setScreenWidth(screenWidth)
     }
 
-    fun setScreenHeight(screenHeight: Int){
+    fun setScreenHeight(screenHeight: Int) {
         moveAction.setScreenHeight(screenHeight)
     }
 
@@ -58,14 +58,14 @@ class SensorUseCase(val sensor: Sensor,val sensorManager: SensorManager):SensorE
         stopRecord()
     }
 
-     fun setRecord(moveViewModel: MoveViewModel) {
+    fun setRecord(moveViewModel: MoveViewModel) {
         this.moveViewModel = moveViewModel
     }
 
 
     private fun stopRecord() {
-        moveViewModel.addMove(MoveEntity(0,recordListEvent))
-        when(val resp= moveViewModel.isAddMoveState.value){
+        moveViewModel.addMove(MoveEntity(0, recordListEvent))
+        when (val resp = moveViewModel.isAddMoveState.value) {
             is Response.Loading -> {
                 // Loading
             }
@@ -78,28 +78,28 @@ class SensorUseCase(val sensor: Sensor,val sensorManager: SensorManager):SensorE
         }
     }
 
-     suspend fun playPreviewRecord(moveEntity: MoveEntity){
-             moveEntity.values.iterator().forEach { sensorEvent ->
-                 delay(15) // Preview speed.
-                 moveAction.setPreviewCoordinates(sensorEvent)
-             }
+    suspend fun playPreviewRecord(moveEntity: MoveEntity) {
+        moveEntity.values.iterator().forEach { sensorEvent ->
+            delay(15) // Preview speed.
+            moveAction.setPreviewCoordinates(sensorEvent)
+        }
     }
 
     override fun onSensorChanged(event: SensorEvent) {
         addSensorValue(event)
         moveAction.setNewCoordinates(event)
-        Log.v("DEGERS",Arrays.toString(event.values))
+        Log.v("DEGERS", Arrays.toString(event.values))
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, p1: Int) {
 
     }
 
-    private fun addSensorValue(event: SensorEvent){
+    private fun addSensorValue(event: SensorEvent) {
         val valueArray = FloatArray(3)
-        valueArray[0]= event.values[0]
-        valueArray[1]= event.values[1]
-        valueArray[2]= event.values[2]
+        valueArray[0] = event.values[0]
+        valueArray[1] = event.values[1]
+        valueArray[2] = event.values[2]
         recordListEvent.add(valueArray)
     }
 }

@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "movements_table")
-data class MoveEntity (
+data class MoveEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Long,
 

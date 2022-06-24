@@ -11,7 +11,7 @@ import com.harunkor.motionmonitorapp.utils.ConverterHelper
 @TypeConverters(ConverterHelper::class)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract val moveDao:MoveDao
+    abstract val moveDao: MoveDao
 
     companion object {
         const val DB_NAME = "MotionMonitorDatabase.db"

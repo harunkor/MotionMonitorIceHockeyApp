@@ -10,15 +10,15 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class MoveRepositoryImp @Inject constructor(private val moveDao: MoveDao): MoveRepository {
+class MoveRepositoryImp @Inject constructor(private val moveDao: MoveDao) : MoveRepository {
     override fun getAllMoves(): Flow<Response<MutableList<MoveEntity>>> {
         return callbackFlow {
-            val allMoves:MutableList<MoveEntity>
+            val allMoves: MutableList<MoveEntity>
             try {
                 trySend(Response.Loading)
                 allMoves = moveDao.loadAllMoves()
                 trySend(Response.Success(allMoves))
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 trySend(Response.Error(e.message ?: e.toString()))
             }
             awaitClose {
@@ -33,7 +33,7 @@ class MoveRepositoryImp @Inject constructor(private val moveDao: MoveDao): MoveR
             val insertSuccess = moveDao.insertMove(moveEntity)
             emit(Response.Success(insertSuccess))
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             emit(Response.Error(e.message ?: e.toString()))
         }
     }

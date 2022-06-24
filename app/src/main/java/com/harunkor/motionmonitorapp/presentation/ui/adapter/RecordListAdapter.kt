@@ -10,9 +10,10 @@ import com.harunkor.motionmonitorapp.R
 import com.harunkor.motionmonitorapp.databinding.FragmentRecordCardItemBinding
 import com.harunkor.motionmonitorapp.domain.model.MoveEntity
 
-class RecordListAdapter(val allMovements: MutableList<MoveEntity>,
-  private val onItemClickHandler: (moveEntity:MoveEntity) -> Unit)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RecordListAdapter(
+    val allMovements: MutableList<MoveEntity>,
+    private val onItemClickHandler: (moveEntity: MoveEntity) -> Unit
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemBinding = DataBindingUtil.inflate<ViewDataBinding>(
@@ -22,17 +23,18 @@ class RecordListAdapter(val allMovements: MutableList<MoveEntity>,
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as RecordViewHolder).onBind(allMovements.get(position),onItemClickHandler)
+        (holder as RecordViewHolder).onBind(allMovements.get(position), onItemClickHandler)
     }
 
     override fun getItemCount(): Int {
-       return allMovements.size
+        return allMovements.size
     }
 
-    class RecordViewHolder(private  val itemBinding: ViewDataBinding
+    class RecordViewHolder(
+        private val itemBinding: ViewDataBinding
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun onBind(moveEntity: MoveEntity,onItemClickHandler: (moveEntity: MoveEntity) -> Unit){
+        fun onBind(moveEntity: MoveEntity, onItemClickHandler: (moveEntity: MoveEntity) -> Unit) {
             val binding = itemBinding as FragmentRecordCardItemBinding
             binding.setVariable(BR.moveEntity, moveEntity)
             binding.recordItem.setOnClickListener { onItemClickHandler(moveEntity) }

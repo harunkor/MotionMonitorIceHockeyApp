@@ -7,15 +7,17 @@ class CricketBallDrawable(color: Int) : Drawable() {
     private var mPaint: Paint? = null
     private val mRadius = 0
 
-   init {
-       mPaint = Paint(Paint.ANTI_ALIAS_FLAG);
-       mPaint?.color = color
-   }
+    init {
+        mPaint = Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint?.color = color
+    }
 
     override fun draw(canvas: Canvas) {
-       val bounds:Rect = getBounds()
-        mPaint?.let { paint -> paint
-            canvas.drawCircle(bounds.centerX().toFloat(),bounds.centerY().toFloat(),
+        val bounds: Rect = getBounds()
+        mPaint?.let { paint ->
+            paint
+            canvas.drawCircle(
+                bounds.centerX().toFloat(), bounds.centerY().toFloat(),
                 mRadius.toFloat(), paint
             )
         }
@@ -27,11 +29,11 @@ class CricketBallDrawable(color: Int) : Drawable() {
     }
 
     override fun setColorFilter(colorFilter: ColorFilter?) {
-       mPaint?.setColorFilter(colorFilter)
+        mPaint?.setColorFilter(colorFilter)
     }
 
     override fun getOpacity(): Int {
-        return  PixelFormat.TRANSLUCENT
+        return PixelFormat.TRANSLUCENT
     }
 
 
