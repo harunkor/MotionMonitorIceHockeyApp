@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adapterRecordList"
+            type="com.harunkor.motionmonitorapp.presentation.ui.adapter.RecordListAdapter" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.fragments.RecordListFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recylerRecord"
+            android:layout_width="match_parent"
+            android:adapter="@{adapterRecordList}"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</layout>
