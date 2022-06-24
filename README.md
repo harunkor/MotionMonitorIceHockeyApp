@@ -14,6 +14,13 @@ Motion Monitor application which tracks the phones the sensor.
  - Parcelable implementation generator (kotlin-parcelize)
  - DataBinding
 
+## Screens
+
+![Screenshot_20220624_213629](https://user-images.githubusercontent.com/7053364/175645510-8f7fc80d-45ec-4be6-a962-aadd15ba1b67.png)
+![Screenshot_20220624_213754](https://user-images.githubusercontent.com/7053364/175645524-81e79be0-bf19-4c87-ba1b-11b311997de6.png)
+
+
+
 
 ## Video
 
