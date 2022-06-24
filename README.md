@@ -2,7 +2,7 @@
 Motion Monitor application which tracks the phones the sensor.
 
 
-# Used Technologies
+## Used Technologies
 
  - MVVM with Clean Architecture
  - Navigation Component
@@ -15,7 +15,7 @@ Motion Monitor application which tracks the phones the sensor.
  - DataBinding
 
 
-# License 📝
+## License 📝
 
 MIT License
 
