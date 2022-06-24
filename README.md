@@ -1,6 +1,8 @@
 # MotionMonitorIceHockeyApp 🏒
 Motion Monitor application which tracks the phones the sensor.
 
+With the motion sensor, I enabled the ball to move within the ice hockey field. The ice hockey ball cannot go out of the field boundary. You can watch them again by recording your wanderings around the ice hockey arena. All movement is recorded after each navigation.
+
 
 ## Used Technologies
 
