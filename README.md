@@ -1,4 +1,4 @@
-# MotionMonitorIceHockeyApp
+# MotionMonitorIceHockeyApp 🏒
 Motion Monitor application which tracks the phones the sensor.
 
 
